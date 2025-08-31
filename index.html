@@ -1,258 +1,168 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Codux.fun - Web & Software Development</title>
-  <meta name="description" content="Codux.fun specializes in modern web development, software solutions, and innovative digital products. Build like Google, scale like Amazon, and design like Apple.">
-  
-  <!-- Keywords Hack (don’t overdo) -->
-  <meta name="keywords" content="Codux, web development, software solutions, mobile apps, AI development, startup tech, Google, Amazon, Microsoft, Apple, Meta, OpenAI, Tesla, SpaceX, Codux.fun">
-
-  <!-- Author -->
-  <meta name="author" content="Codux.fun Team">
-
-  <!-- Open Graph (for social media sharing) -->
-  <meta property="og:title" content="Codux.fun - Building the Future of Web & Software">
-  <meta property="og:description" content="Web & software development company delivering modern, scalable solutions.">
-  <meta property="og:image" content="/logo.png">
-  <meta property="og:url" content="https://codux.fun">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Codux.fun - Web & Software Development">
-  <meta name="twitter:description" content="We create innovative web & software solutions for the future.">
-  <meta name="twitter:image" content="/logo.png">
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://codux.fun/">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo.webp">
-  <link rel="apple-touch-icon" href="assets/logo.webp">
-  
-  <!-- Sitemap & Robots -->
-  <meta name="robots" content="index, follow">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <!--  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codux.fun - Building the Future, Today.</title>
     
-    <!-- Tailwind CSS CDN -->
+    <!-- SEO Optimized Title -->
+    <title>Custom Web Design &amp; App Development | Codux.fun</title>
+    
+    <!-- SEO Optimized Meta Description -->
+    <meta name="description" content="Codux.fun offers affordable, modern websites and Android apps for businesses worldwide. Boost your online presence and grow your brand globally.">
+    
+    <!-- Refined Meta Keywords -->
+    <meta name="keywords" content="custom web design, android app development, affordable websites, small business solutions, web development company, codux.fun">
+    
+    <meta name="author" content="Codux.fun Team">
+    <meta property="og:title" content="Custom Web &amp; App Development for a Global Audience | Codux.fun">
+    <meta property="og:description" content="Helping businesses worldwide thrive with high-quality, affordable websites and Android apps.">
+    <meta property="og:image" content="https://placehold.co/1200x630/010416/0ea5e9?text=Codux.fun+Global">
+    <meta property="og:url" content="https://codux.fun">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://codux.fun/">
+    <link rel="icon" type="image/png" href="assets/logo.webp">
+    <link rel="apple-touch-icon" href="assets/logo.webp">
+
+    <!-- Tailwind CSS & Alpine.js -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <script src="https://unpkg.com/alpinejs@3.13.10/dist/cdn.min.js"></script>
+
     <!-- Google Fonts: Poppins & Orbitron -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Alpine.js for interactivity -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <!-- Custom CSS -->
     <style>
-        /* Custom styles and animations */
+        :root {
+            --bg-dark: #010416;
+            --primary: #0ea5e9;
+            --primary-glow: rgba(14, 165, 233, 0.5);
+            --secondary-glow: rgba(255, 0, 193, 0.5);
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #000000;
+            background-color: var(--bg-dark);
             color: #e2e8f0;
             overflow-x: hidden;
         }
 
-        .font-orbitron {
-            font-family: 'Orbitron', sans-serif;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(circle at top left, var(--primary-glow), transparent 40%),
+                              radial-gradient(circle at bottom right, var(--secondary-glow), transparent 40%);
+            background-size: 200% 200%;
+            animation: aurora 20s ease-in-out infinite;
+            z-index: -1;
         }
 
-        /* Neon Glow Effect */
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
         .neon-text {
             color: #fff;
-            text-shadow:
-                0 0 7px #0ea5e9,
-                0 0 10px #0ea5e9,
-                0 0 21px #0ea5e9,
-                0 0 42px #0ea5e9;
+            text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 20px var(--primary);
         }
 
         .neon-button {
             transition: all 0.3s ease;
-            border: 2px solid #0ea5e9;
-            box-shadow: 0 0 10px #0ea5e9, inset 0 0 10px #0ea5e9;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+            backdrop-filter: blur(5px);
+            background: rgba(14, 165, 233, 0.1);
         }
         .neon-button:hover {
-            background-color: #0ea5e9;
-            color: #000;
-            box-shadow: 0 0 20px #0ea5e9, 0 0 40px #0ea5e9;
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
         }
         
-        /* Particle Background Container */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
-        /* Scroll-triggered animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        
-        /* Glassmorphism Card with Neon Edge */
         .glass-card {
             background: rgba(14, 165, 233, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(14, 165, 233, 0.2);
             position: relative;
             overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.3s ease;
         }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.5), transparent);
-            transition: 0.5s;
-        }
-        .glass-card:hover::before {
-            left: 100%;
-        }
-
-        /* Active nav link style */
-        .nav-link.active {
-            color: #0ea5e9; /* sky-500 */
-            text-shadow: 0 0 5px #0ea5e9;
+        .glass-card:hover {
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
         }
         
-        /* Glitch Effect for Heading */
-        .glitch {
-            position: relative;
-        }
-        .glitch:before, .glitch:after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            overflow: hidden;
-        }
-        .glitch:before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00c1;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-        .glitch:after {
-            left: -2px;
-            text-shadow: -2px 0 #00fff9;
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        /* 3D Card Hover Effect */
+        .card-3d-hover {
+            transform-style: preserve-3d;
         }
 
-        @keyframes glitch-anim-1 {
-            0% { clip-path: inset(15% 0 86% 0); } 10% { clip-path: inset(4% 0 16% 0); } 20% { clip-path: inset(45% 0 46% 0); } 30% { clip-path: inset(9% 0 35% 0); } 40% { clip-path: inset(41% 0 10% 0); } 50% { clip-path: inset(93% 0 2% 0); } 60% { clip-path: inset(18% 0 25% 0); } 70% { clip-path: inset(45% 0 19% 0); } 80% { clip-path: inset(93% 0 5% 0); } 90% { clip-path: inset(3% 0 29% 0); } 100% { clip-path: inset(59% 0 37% 0); }
-        }
-        @keyframes glitch-anim-2 {
-            0% { clip-path: inset(83% 0 13% 0); } 10% { clip-path: inset(33% 0 3% 0); } 20% { clip-path: inset(15% 0 48% 0); } 30% { clip-path: inset(91% 0 8% 0); } 40% { clip-path: inset(35% 0 36% 0); } 50% { clip-path: inset(7% 0 63% 0); } 60% { clip-path: inset(60% 0 10% 0); } 70% { clip-path: inset(89% 0 4% 0); } 80% { clip-path: inset(42% 0 52% 0); } 90% { clip-path: inset(93% 0 5% 0); } 100% { clip-path: inset(55% 0 23% 0); }
-        }
-
-        /* Testimonial Card Styles */
-        .testimonial-card {
-            background: rgba(14, 165, 233, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            border-left: 4px solid #0ea5e9;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-        }
-        
-        /* Back to Top Button */
-        #back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: rgba(14, 165, 233, 0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+        .reveal {
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
-            z-index: 1000;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        #back-to-top.visible {
+        .reveal.visible {
             opacity: 1;
-            visibility: visible;
+            transform: translateY(0);
         }
-        #back-to-top:hover {
-            background-color: #0ea5e9;
-        }
-
     </style>
-</head>
-<body class="antialiased" x-data="{ activeSection: 'home' }">
+    
+    <!-- ** NEW: Organization Schema for SEO ** -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Codux.fun",
+      "image": "https://codux.fun/assets/logo.webp",
+      "url": "https://codux.fun",
+      "telephone": "+919344221217",
+      "description": "Codux.fun offers affordable, modern websites and Android apps for businesses worldwide. We specialize in helping businesses of all sizes boost their online presence and grow."
+    }
+    </script>
 
-    <!-- Header / Navigation -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
-        :class="{ 'bg-black/80 backdrop-blur-lg shadow-lg shadow-sky-500/10': window.scrollY > 50 }">
+</head>
+
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+        x-data="{ scrolled: false }" @scroll.window="scrolled = window.scrollY > 50"
+        :class="{ 'bg-black/80 backdrop-blur-lg shadow-lg shadow-sky-500/10': scrolled }">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <!-- Logo -->
                 <a href="#home" class="text-2xl font-bold text-white tracking-wider font-orbitron">
                     codux<span class="text-sky-400 neon-text">.fun</span>
                 </a>
-
-                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8 font-semibold">
-                    <a href="#home" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300" :class="{ 'active': activeSection === 'home' }">Home</a>
-                    <a href="#about" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300" :class="{ 'active': activeSection === 'about' }">About</a>
-                    <a href="#services" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300" :class="{ 'active': activeSection === 'services' }">Services</a>
-                    <a href="#portfolio" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300" :class="{ 'active': activeSection === 'portfolio' }">Portfolio</a>
-                    <a href="#testimonials" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300" :class="{ 'active': activeSection === 'testimonials' }">Testimonials</a>
-                    <a href="#contact" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300" :class="{ 'active': activeSection === 'contact' }">Contact</a>
+                    <a href="#about" class="text-slate-300 hover:text-sky-400 transition-colors">About</a>
+                    <a href="#services" class="text-slate-300 hover:text-sky-400 transition-colors">Services</a>
+                    <a href="#process" class="text-slate-300 hover:text-sky-400 transition-colors">Process</a>
+                    <a href="#packages" class="text-slate-300 hover:text-sky-400 transition-colors">Packages</a>
+                    <a href="#faq" class="text-slate-300 hover:text-sky-400 transition-colors">FAQ</a>
+                    <a href="#contact" class="text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
                 </nav>
-                
-                <!-- Mobile Menu Button -->
+                 <!-- Mobile Menu Logic -->
                 <div class="md:hidden" x-data="{ open: false }">
-                    <button @click="open = !open" class="text-white focus:outline-none">
+                    <button @click="open = !open" class="text-white focus:outline-none" aria-label="Open menu">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                             <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                    <!-- Mobile Menu -->
-                    <div x-show="open" @click.away="open = false" class="absolute top-full right-0 mt-2 w-full bg-black/95 backdrop-blur-lg rounded-lg shadow-xl"
-                         x-transition:enter="transition ease-out duration-200"
-                         x-transition:enter-start="opacity-0 transform -translate-y-2"
-                         x-transition:enter-end="opacity-100 transform translate-y-0"
-                         x-transition:leave="transition ease-in duration-150"
-                         x-transition:leave-start="opacity-100 transform translate-y-0"
-                         x-transition:leave-end="opacity-0 transform -translate-y-2">
-                        <a href="#home" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Home</a>
+                    <div x-show="open" @click.away="open = false" class="absolute top-full right-0 mt-2 w-full bg-black/95 backdrop-blur-lg rounded-lg shadow-xl" x-transition>
                         <a href="#about" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">About</a>
                         <a href="#services" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Services</a>
-                        <a href="#portfolio" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Portfolio</a>
-                        <a href="#testimonials" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Testimonials</a>
+                        <a href="#process" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Process</a>
+                        <a href="#packages" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Packages</a>
+                        <a href="#faq" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">FAQ</a>
                         <a href="#contact" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Contact</a>
                     </div>
                 </div>
@@ -263,16 +173,16 @@
     <main>
         <!-- Home Section -->
         <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-            <div id="particles-js"></div>
+            <div id="globe-container" class="absolute inset-0 z-0 opacity-50"></div>
             <div class="container mx-auto px-6 text-center relative z-10">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 reveal font-orbitron glitch" data-text="FORGING DIGITAL REALITIES">
-                    FORGING DIGITAL REALITIES
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 reveal font-orbitron">
+                    Building a Digital Future, Worldwide
                 </h1>
                 <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 reveal" style="transition-delay: 200ms;">
-                    Architects of the web who <span id="typed-output" class="text-sky-400"></span>
+                    Empowering businesses of all sizes with affordable, cutting-edge websites and Android apps.
                 </p>
-                <a href="#contact" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 reveal" style="transition-delay: 400ms;">
-                    Launch Your Vision
+                <a href="#packages" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 reveal" style="transition-delay: 400ms;">
+                    Explore Packages
                 </a>
             </div>
         </section>
@@ -281,33 +191,18 @@
         <section id="about" class="py-20 md:py-32">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">THE <span class="text-sky-400 neon-text">CODEX</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">This is our origin story. Our mission. Our code.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Our <span class="text-sky-400 neon-text">Global Mission</span></h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Our philosophy is simple: help businesses succeed online, wherever they are.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="reveal">
-                        <img src="assets/team.webp" alt="Our Team" class="rounded-2xl shadow-2xl shadow-sky-500/20 w-full">
+                        <img src="assets/team.webp" alt="A graphic representing Codux.fun's focus on global business solutions" class="rounded-2xl shadow-2xl shadow-sky-500/20 w-full">
                     </div>
                     <div class="reveal" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-bold text-white mb-4">Our Mission: De-bug the Ordinary</h3>
-                        <h3 class="text-2xl font-bold text-white mb-4">Our Moto: Teamwork makes our Dream work</h3>
+                        <h3 class="text-2xl font-bold text-white mb-4">Empowering Businesses of All Sizes</h3>
                         <p class="text-slate-400 mb-6">
-                            We're here to shatter the mundane and build the magnificent. With a foundation of robust technology and a passion for pixel-perfect design, we help brands launch into new digital orbits. Your success is our core function.
+                           Our core focus is helping businesses thrive in the digital world. We provide high-quality website and Android app development at affordable costs, ensuring that businesses of any size can have a powerful online presence. Your success is our core function.
                         </p>
-                        <div id="stats" class="flex flex-wrap gap-6">
-                            <div class="text-center">
-                                <p class="text-4xl font-bold text-sky-400 font-orbitron" data-target="2">0</p>
-                                <p class="text-slate-400">Projects Launched</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-4xl font-bold text-sky-400 font-orbitron" data-target="2">0</p>
-                                <p class="text-slate-400">Happy Clients</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="text-4xl font-bold text-sky-400 font-orbitron" data-target="2">0</p>
-                                <p class="text-slate-400">Years of Experience</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -317,89 +212,128 @@
         <section id="services" class="py-20 md:py-32 bg-black/50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">CORE <span class="text-sky-400 neon-text">FUNCTIONS</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">The elite services we deploy to elevate your digital presence.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Our <span class="text-sky-400 neon-text">Services</span></h2>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Card 1 -->
-                    <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/20 reveal">
-                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Web Development</h3>
-                        <p class="text-slate-400">Forging hyper-fast, secure, and scalable websites that form the backbone of your digital identity.</p>
+                    <div class="glass-card card-3d-hover p-8 rounded-2xl text-center reveal">
+                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Custom Web Development</h3>
+                        <p class="text-slate-400">Forging fast, secure, and scalable websites that form the backbone of your digital identity.</p>
                     </div>
-                    <!-- Service Card 2 -->
-                    <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/20 reveal" style="transition-delay: 200ms;">
-                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Mobile App Development</h3>
-                        <p class="text-slate-400">Engineering sleek, intuitive mobile apps for iOS & Android that put your brand in every pocket.</p>
+                    <div class="glass-card card-3d-hover p-8 rounded-2xl text-center reveal" style="transition-delay: 200ms;">
+                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Android App Development</h3>
+                        <p class="text-slate-400">Engineering sleek, intuitive Android apps that put your brand in every pocket.</p>
                     </div>
-                    <!-- Service Card 3 -->
-                    <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/20 reveal" style="transition-delay: 400ms;">
-                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">UI/UX Design</h3>
+                    <div class="glass-card card-3d-hover p-8 rounded-2xl text-center reveal" style="transition-delay: 400ms;">
+                         <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Modern UI/UX Design</h3>
                         <p class="text-slate-400">Crafting breathtaking, user-obsessed interfaces that deliver an unforgettable experience.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-20 md:py-32">
+        <!-- ** NEW: Our Process Section ** -->
+        <section id="process" class="py-20 md:py-32">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">CASE <span class="text-sky-400 neon-text">STUDIES</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Proof of concept. See our code in the wild.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Our <span class="text-sky-400 neon-text">Process</span></h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">A streamlined workflow for guaranteed success, from concept to launch.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Portfolio Item 1 -->
-                    <div class="group relative overflow-hidden rounded-2xl reveal border-2 border-transparent hover:border-sky-500 transition-all duration-300">
-                        <img src="https://placehold.co/600x400/000000/0ea5e9?text=Website" alt="Project One" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-xl font-bold text-white mb-2 font-orbitron">Project ImayamTours</h3>
-                            <p class="text-slate-300">A full-featured business site for a tourist company.</p>
-                            <a href="https://imayamtours.com" class="underline underline-offset-4 text-sky-400" target="_blank" >Visit</a>
-                        </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <!-- Step 1 -->
+                    <div class="glass-card p-6 rounded-xl reveal">
+                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">01</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Discover</h3>
+                        <p class="text-slate-400 text-sm">We start by understanding your vision, goals, and target audience.</p>
                     </div>
-                    <!-- Portfolio Item 2 -->
-                    <div class="group relative overflow-hidden rounded-2xl reveal border-2 border-transparent hover:border-sky-500 transition-all duration-300" style="transition-delay: 200ms;">
-                        <img src="https://placehold.co/600x400/000000/0ea5e9?text=Android" alt="Project Two" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-xl font-bold text-white mb-2 font-orbitron">Dashboard App</h3>
-                            <p class="text-slate-300">A sleek and professional android app made for self to store customer details.</p>
-                        </div>
+                    <!-- Step 2 -->
+                    <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 200ms;">
+                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">02</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Design</h3>
+                        <p class="text-slate-400 text-sm">We craft a stunning, user-friendly design prototype for your approval.</p>
                     </div>
-                    <!-- Portfolio Item 3 -->
-                    <div class="group relative overflow-hidden rounded-2xl reveal border-2 border-transparent hover:border-sky-500 transition-all duration-300" style="transition-delay: 400ms;">
-                        <img src="https://placehold.co/600x400/000000/0ea5e9?text=Project+Beta" alt="Project Three" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <h3 class="text-xl font-bold text-white mb-2 font-orbitron">Project Beta</h3>
-                            <p class="text-slate-300">Coming Soon ... , May be your's</p>
-                        </div>
+                    <!-- Step 3 -->
+                    <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 400ms;">
+                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">03</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Develop</h3>
+                        <p class="text-slate-400 text-sm">Our expert developers bring the design to life with clean, efficient code.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 600ms;">
+                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">04</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Deploy</h3>
+                        <p class="text-slate-400 text-sm">We launch your project and provide support to ensure a smooth takeoff.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- NEW: Testimonials Section -->
-        <section id="testimonials" class="py-20 md:py-32 bg-black/50">
+        <!-- Packages Section -->
+        <section id="packages" class="py-20 md:py-32 bg-black/50">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Affordable <span class="text-sky-400 neon-text">Packages</span></h2>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                    <div class="glass-card card-3d-hover p-8 flex flex-col reveal">
+                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Launchpad</h3>
+                        <p class="text-sky-400 text-4xl font-bold mb-4">₹3,000</p>
+                        <p class="text-slate-400 mb-6 flex-grow">A professional landing page or 5-page site to get your business online.</p>
+                        <a href="#contact" class="mt-auto w-full text-center neon-button text-sky-400 font-bold py-3 px-8 rounded-lg">Select Plan</a>
+                    </div>
+                    <div class="glass-card card-3d-hover p-8 flex flex-col border-2 border-sky-500 lg:scale-105 shadow-2xl shadow-sky-500/30 reveal" style="transition-delay: 200ms;">
+                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Orbit</h3>
+                        <p class="text-sky-400 text-4xl font-bold mb-4">₹9,000</p>
+                        <p class="text-slate-400 mb-6 flex-grow">A complete website solution with a custom design and CMS integration.</p>
+                        <a href="#contact" class="mt-auto w-full text-center neon-button bg-sky-500 text-black font-bold py-3 px-8 rounded-lg">Select Plan</a>
+                    </div>
+                    <div class="glass-card card-3d-hover p-8 flex flex-col reveal" style="transition-delay: 400ms;">
+                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Galaxy</h3>
+                        <p class="text-sky-400 text-4xl font-bold mb-4">Custom</p>
+                        <p class="text-slate-400 mb-6 flex-grow">A bespoke website or Android app tailored to your unique requirements.</p>
+                        <a href="#contact" class="mt-auto w-full text-center neon-button text-sky-400 font-bold py-3 px-8 rounded-lg">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ** NEW: FAQ Section ** -->
+        <section id="faq" class="py-20 md:py-32">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">CLIENT <span class="text-sky-400 neon-text">TRANSMISSIONS</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Feedback from partners who've journeyed with us into the digital frontier.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Frequently Asked <span class="text-sky-400 neon-text">Questions</span></h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card reveal">
-                        <p class="text-slate-300 italic">"Working with codux.fun was a game-changer. Their attention to detail and technical expertise is unmatched. Our user engagement is through the roof!"</p>
-                        <div class="mt-4 text-right">
-                            <p class="font-bold text-white">Vinoth Kumar</p>
-                            <p class="text-sm text-sky-400">CEO, Imayam Tours.</p>
+                <div class="max-w-3xl mx-auto space-y-4" x-data="{ open: 1 }">
+                    <!-- FAQ Item 1 -->
+                    <div class="glass-card rounded-lg reveal">
+                        <button @click="open = (open === 1 ? 0 : 1)" class="w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">How long does a project typically take?</span>
+                            <span class="text-sky-400 transition-transform" :class="{ 'rotate-45': open === 1 }">+</span>
+                        </button>
+                        <div x-show="open === 1" x-collapse class="px-6 pb-6 text-slate-400">
+                            A simple "Launchpad" website takes about 1-2 weeks. An "Orbit" package can take 3-4 weeks. Custom "Galaxy" projects have variable timelines based on their complexity.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="glass-card rounded-lg reveal" style="transition-delay: 200ms;">
+                        <button @click="open = (open === 2 ? 0 : 2)" class="w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">What do I need to provide to get started?</span>
+                            <span class="text-sky-400 transition-transform" :class="{ 'rotate-45': open === 2 }">+</span>
+                        </button>
+                        <div x-show="open === 2" x-collapse class="px-6 pb-6 text-slate-400">
+                           To start, we'll need your business logo, any text content you want on the site, and any specific images you'd like to include. We can also help with content creation if needed!
+                        </div>
+                    </div>
+                     <!-- FAQ Item 3 -->
+                    <div class="glass-card rounded-lg reveal" style="transition-delay: 400ms;">
+                        <button @click="open = (open === 3 ? 0 : 3)" class="w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Do you offer maintenance after launch?</span>
+                            <span class="text-sky-400 transition-transform" :class="{ 'rotate-45': open === 3 }">+</span>
+                        </button>
+                        <div x-show="open === 3" x-collapse class="px-6 pb-6 text-slate-400">
+                           Yes, we offer optional monthly maintenance plans to keep your site updated, secure, and running smoothly. We can discuss these options based on your needs.
                         </div>
                     </div>
                 </div>
@@ -408,192 +342,144 @@
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">INITIATE <span class="text-sky-400 neon-text">CONTACT</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Have a world-changing idea? Let's connect and make it a reality.</p>
+            <div class="container mx-auto px-6 max-w-2xl text-center">
+                 <div class="mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Get Your <span class="text-sky-400 neon-text">Free Quote</span></h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Ready to launch? Let's connect and bring your digital vision to life.</p>
                 </div>
-                <div class="max-w-2xl mx-auto">
-                    <form id="contact-form" class="space-y-6 reveal" style="transition-delay: 400ms;">
-                        <input type="text" id="name" placeholder="Your Name" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
-                        <input type="email" id="email" placeholder="Your Email" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
-                        <input type="tel" id="phone" placeholder="Your Phone Number (e.g., 911234567890)" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
-                        <textarea id="message" rows="5" placeholder="Your Mission Briefing..." class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required></textarea>
-                        <div class="text-center">
-                            <button type="submit" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-                                Transmit Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <form id="contact-form" class="space-y-6 reveal" style="transition-delay: 400ms;">
+                    <input type="text" id="name" placeholder="Your Name" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
+                    <input type="email" id="email" placeholder="Your Email" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
+                    <input type="tel" id="phone" placeholder="Your Phone (Optional)" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500">
+                    <textarea id="message" rows="5" placeholder="Tell us about your project..." class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required></textarea>
+                    <button type="submit" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg w-full">Transmit Message</button>
+                </form>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black border-t border-sky-500/20">
-        <div class="container mx-auto px-6 py-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <p class="text-slate-400">&copy; 2025 codux.fun</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="text-slate-400 hover:text-sky-400 transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/></svg></a>
-                    <a href="#" class="text-slate-400 hover:text-sky-400 transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg></a>
-                    <a href="#" class="text-slate-400 hover:text-sky-400 transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17C15.08,12.17 15.7,12.8 15.7,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,6 8,5.44 7.21,5.44C6.42,5.44 5.86,6 5.86,6.88C5.86,7.73 6.42,8.56 7.21,8.56H7.22L6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"/></svg></a>
+    <!-- ** NEW: Expanded Footer ** -->
+    <footer class="bg-black/50 border-t border-sky-500/20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <a href="#home" class="text-2xl font-bold text-white tracking-wider font-orbitron">
+                        codux<span class="text-sky-400 neon-text">.fun</span>
+                    </a>
+                    <p class="text-slate-400 mt-4">Digital Solutions for a Global Audience.</p>
                 </div>
+                <div>
+                    <h3 class="font-semibold text-white tracking-wider">Quick Links</h3>
+                    <div class="mt-4 space-y-2">
+                        <a href="#about" class="block text-slate-400 hover:text-sky-400">About Us</a>
+                        <a href="#services" class="block text-slate-400 hover:text-sky-400">Services</a>
+                        <a href="#packages" class="block text-slate-400 hover:text-sky-400">Packages</a>
+                        <a href="#contact" class="block text-slate-400 hover:text-sky-400">Contact</a>
+                    </div>
+                </div>
+                 <div>
+                    <h3 class="font-semibold text-white tracking-wider">Connect</h3>
+                     <p class="text-slate-400 mt-4">sdhanush451@gmail.com</p>
+                    <p class="text-slate-400">+91 93442 21217</p>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-sky-500/20 pt-8 text-center text-slate-500">
+                <p>&copy; 2025 codux.fun | All Rights Reserved.</p>
             </div>
         </div>
     </footer>
     
-    <!-- Back to Top Button -->
-    <button id="back-to-top" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
-    </button>
-    
-    <!-- Particles.js CDN -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <!-- Typed.js for dynamic text -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/three-globe@2.31.0/dist/three-globe.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- CORE FEATURE: WhatsApp Form Handler ---
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
 
-                    const yourWhatsAppNumber = '919344221217'; 
-                    
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const phone = document.getElementById('phone').value;
-                    const message = document.getElementById('message').value;
+        // --- Interactive Globe ---
+        try {
+            const globeContainer = document.getElementById('globe-container');
+            if (globeContainer && typeof Globe !== 'undefined') {
+                const gData = [...Array(10).keys()].map(() => ({
+                    lat: (Math.random() - 0.5) * 180,
+                    lng: (Math.random() - 0.5) * 360,
+                    size: Math.random() / 3,
+                    color: ['#0ea5e9', '#ffffff', '#93c5fd'][Math.round(Math.random() * 2)]
+                }));
 
-                    // Format the message for WhatsApp
-                    const formattedMessage = `
-*New Inquiry from codux.fun!*
+                const globe = Globe()(globeContainer)
+                    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+                    .pointsData(gData)
+                    .pointAltitude('size')
+                    .pointColor('color')
+                    .arcsData([...Array(gData.length).keys()].map(() => ({
+                        startLat: gData[Math.floor(Math.random() * gData.length)].lat,
+                        startLng: gData[Math.floor(Math.random() * gData.length)].lng,
+                        endLat: gData[Math.floor(Math.random() * gData.length)].lat,
+                        endLng: gData[Math.floor(Math.random() * gData.length)].lng,
+                        color: `rgba(14, 165, 233, ${Math.random() * 0.5 + 0.2})`
+                     })))
+                    .arcColor('color')
+                    .arcDashLength(0.4)
+                    .arcDashGap(1)
+                    .arcDashInitialGap(() => Math.random())
+                    .arcDashAnimateTime(4000)
+                    .arcStroke(0.2);
 
-*Name:* ${name}
-*Email:* ${email}
-*Phone:* ${phone}
-
-*Message:*
-${message}
-                    `;
-
-                    // Create the WhatsApp URL
-                    const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(formattedMessage)}`;
-                    
-                    // Open WhatsApp in a new tab
-                    window.open(whatsappUrl, '_blank');
-                });
+                globe.controls().autoRotate = true;
+                globe.controls().autoRotateSpeed = 0.8;
+                globe.controls().enableZoom = false;
             }
+        } catch (error) {
+            console.error("3D Globe initialization failed:", error);
+        }
 
-            // --- Typed.js Hero Animation ---
-            if (document.getElementById('typed-output')) {
-                new Typed('#typed-output', {
-                    strings: ['engineer immersive digital experiences.', 'don\'t just write code.', 'captivate and convert.'],
-                    typeSpeed: 50,
-                    backSpeed: 30,
-                    backDelay: 2000,
-                    loop: true,
-                    smartBackspace: true,
-                });
-            }
-
-            // --- Particles.js Initialization ---
-            if (document.getElementById('particles-js')) {
-                particlesJS("particles-js", {
-                    "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#0ea5e9" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#0ea5e9", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" } },
-                    "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } } },
-                    "retina_detect": true
-                });
-            }
-
-            // --- Scroll Reveal Animation ---
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // --- Animated Counter on Scroll ---
-            const statsSection = document.getElementById('stats');
-            if (statsSection) {
-                const counterObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const counters = statsSection.querySelectorAll('p[data-target]');
-                            counters.forEach(counter => {
-                                const target = +counter.getAttribute('data-target');
-                                let current = 0;
-                                const increment = target / 100;
-
-                                const updateCounter = () => {
-                                    if (current < target) {
-                                        current += increment;
-                                        counter.innerText = Math.ceil(current);
-                                        requestAnimationFrame(updateCounter);
-                                    } else {
-                                        counter.innerText = target;
-                                    }
-                                };
-                                updateCounter();
-                            });
-                            observer.unobserve(statsSection);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                counterObserver.observe(statsSection);
-            }
-
-            // --- Active Nav Link on Scroll ---
-            const sections = document.querySelectorAll('main section[id]');
-            const alpineInstance = document.querySelector('[x-data]')?.__x;
-            if (alpineInstance && sections.length > 0) {
-                const sectionObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                            alpineInstance.activeSection = entry.target.id;
-                        }
-                    });
-                }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-                sections.forEach(section => sectionObserver.observe(section));
-            }
-
-            // --- Smooth Scrolling for Anchor Links ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+        // --- 3D Card Hover Effect ---
+        const cards = document.querySelectorAll('.card-3d-hover');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             });
 
-            // --- Back to Top Button Logic ---
-            const backToTopButton = document.getElementById('back-to-top');
-            if (backToTopButton) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        backToTopButton.classList.add('visible');
-                    } else {
-                        backToTopButton.classList.remove('visible');
-                    }
-                });
-                backToTopButton.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
         });
-    </script>
 
+        // --- WhatsApp Form Handler ---
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const yourWhatsAppNumber = '919344221217'; 
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+                const formattedMessage = `*New Inquiry from codux.fun!*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone || 'Not provided'}\n\n*Message:*\n${message}`;
+                const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(formattedMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
+        // --- Intersection Observer for Animations ---
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    });
+    </script>
 </body>
 </html>
+
