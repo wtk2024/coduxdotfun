@@ -3,36 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Optimized Title -->
-    <title>Custom Web Design &amp; App Development | Codux.fun</title>
-    
-    <!-- SEO Optimized Meta Description -->
+    <title>Custom Web Design & App Development | Codux.fun</title>
     <meta name="description" content="Codux.fun offers affordable, modern websites and Android apps for businesses worldwide. Boost your online presence and grow your brand globally.">
-    
-    <!-- Refined Meta Keywords -->
     <meta name="keywords" content="custom web design, android app development, affordable websites, small business solutions, web development company, codux.fun">
     
-    <meta name="author" content="Codux.fun Team">
-    <meta property="og:title" content="Custom Web &amp; App Development for a Global Audience | Codux.fun">
-    <meta property="og:description" content="Helping businesses worldwide thrive with high-quality, affordable websites and Android apps.">
-    <meta property="og:image" content="https://placehold.co/1200x630/010416/0ea5e9?text=Codux.fun+Global">
-    <meta property="og:url" content="https://codux.fun">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://codux.fun/">
-    <link rel="icon" type="image/png" href="assets/logo.webp">
-    <link rel="apple-touch-icon" href="assets/logo.webp">
-
-    <!-- Tailwind CSS & Alpine.js -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs@3.13.10/dist/cdn.min.js"></script>
-
-    <!-- Google Fonts: Poppins & Orbitron -->
+    
+    <!-- Google Fonts: Poppins & Orbitron (from your file) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
+    <!-- Custom CSS (from your file) -->
     <style>
         :root {
             --bg-dark: #010416;
@@ -85,6 +68,13 @@
             color: var(--bg-dark);
             box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
         }
+        .neon-button:disabled {
+            border-color: #4b5563;
+            color: #9ca3af;
+            background: rgba(75, 85, 99, 0.1);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
         
         .glass-card {
             background: rgba(14, 165, 233, 0.05);
@@ -99,387 +89,717 @@
             box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
         }
         
-        /* 3D Card Hover Effect */
-        .card-3d-hover {
-            transform-style: preserve-3d;
+        /* Form Input Styles */
+        .form-input {
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.6); /* bg-slate-900/60 */
+            border: 1px solid #334155; /* border-slate-700 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            color: white;
+            transition: all 0.2s ease;
+        }
+        .form-input::placeholder {
+            color: #64748b; /* placeholder-slate-500 */
+        }
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--bg-dark), 0 0 0 4px var(--primary); /* focus:ring-2 focus:ring-sky-500 */
+            border-color: var(--primary);
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        /* Vue transition classes */
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.3s ease;
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* Helper class to hide page sections */
+        .hidden-page {
+            display: none;
+        }
+
+        /* Scrollbar styles for a modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 10px;
+            border: 2px solid var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #38bdf8;
+        }
+
+        /* v-cloak to prevent un-styled content flash */
+        [v-cloak] {
+            display: none;
         }
     </style>
-    
-    <!-- ** NEW: Organization Schema for SEO ** -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Codux.fun",
-      "image": "https://codux.fun/assets/logo.webp",
-      "url": "https://codux.fun",
-      "telephone": "+919344221217",
-      "description": "Codux.fun offers affordable, modern websites and Android apps for businesses worldwide. We specialize in helping businesses of all sizes boost their online presence and grow."
-    }
-    </script>
-
 </head>
-
 <body class="antialiased">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
-        x-data="{ scrolled: false }" @scroll.window="scrolled = window.scrollY > 50"
-        :class="{ 'bg-black/80 backdrop-blur-lg shadow-lg shadow-sky-500/10': scrolled }">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="#home" class="text-2xl font-bold text-white tracking-wider font-orbitron">
-                    codux<span class="text-sky-400 neon-text">.fun</span>
-                </a>
-                <nav class="hidden md:flex items-center space-x-8 font-semibold">
-                    <a href="#about" class="text-slate-300 hover:text-sky-400 transition-colors">About</a>
-                    <a href="#services" class="text-slate-300 hover:text-sky-400 transition-colors">Services</a>
-                    <a href="#process" class="text-slate-300 hover:text-sky-400 transition-colors">Process</a>
-                    <a href="#packages" class="text-slate-300 hover:text-sky-400 transition-colors">Packages</a>
-                    <a href="#faq" class="text-slate-300 hover:text-sky-400 transition-colors">FAQ</a>
-                    <a href="#contact" class="text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
-                </nav>
-                 <!-- Mobile Menu Logic -->
-                <div class="md:hidden" x-data="{ open: false }">
-                    <button @click="open = !open" class="text-white focus:outline-none" aria-label="Open menu">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                    <div x-show="open" @click.away="open = false" class="absolute top-full right-0 mt-2 w-full bg-black/95 backdrop-blur-lg rounded-lg shadow-xl" x-transition>
-                        <a href="#about" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">About</a>
-                        <a href="#services" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Services</a>
-                        <a href="#process" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Process</a>
-                        <a href="#packages" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Packages</a>
-                        <a href="#faq" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">FAQ</a>
-                        <a href="#contact" @click="open = false" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-            <div id="globe-container" class="absolute inset-0 z-0 opacity-50"></div>
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 reveal font-orbitron">
-                    Building a Digital Future, Worldwide
-                </h1>
-                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 reveal" style="transition-delay: 200ms;">
-                    Empowering businesses of all sizes with affordable, cutting-edge websites and Android apps.
-                </p>
-                <a href="#packages" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 reveal" style="transition-delay: 400ms;">
-                    Explore Packages
-                </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Our <span class="text-sky-400 neon-text">Global Mission</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Our philosophy is simple: help businesses succeed online, wherever they are.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="reveal">
-                        <img src="assets/team.webp" alt="A graphic representing Codux.fun's focus on global business solutions" class="rounded-2xl shadow-2xl shadow-sky-500/20 w-full">
-                    </div>
-                    <div class="reveal" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-bold text-white mb-4">Empowering Businesses of All Sizes</h3>
-                        <p class="text-slate-400 mb-6">
-                           Our core focus is helping businesses thrive in the digital world. We provide high-quality website and Android app development at affordable costs, ensuring that businesses of any size can have a powerful online presence. Your success is our core function.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="py-20 md:py-32 bg-black/50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Our <span class="text-sky-400 neon-text">Services</span></h2>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="glass-card card-3d-hover p-8 rounded-2xl text-center reveal">
-                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
-                        <h3 class="text-xl font-bold text-white mb-3">Custom Web Development</h3>
-                        <p class="text-slate-400">Forging fast, secure, and scalable websites that form the backbone of your digital identity.</p>
-                    </div>
-                    <div class="glass-card card-3d-hover p-8 rounded-2xl text-center reveal" style="transition-delay: 200ms;">
-                        <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
-                        <h3 class="text-xl font-bold text-white mb-3">Android App Development</h3>
-                        <p class="text-slate-400">Engineering sleek, intuitive Android apps that put your brand in every pocket.</p>
-                    </div>
-                    <div class="glass-card card-3d-hover p-8 rounded-2xl text-center reveal" style="transition-delay: 400ms;">
-                         <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div>
-                        <h3 class="text-xl font-bold text-white mb-3">Modern UI/UX Design</h3>
-                        <p class="text-slate-400">Crafting breathtaking, user-obsessed interfaces that deliver an unforgettable experience.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ** NEW: Our Process Section ** -->
-        <section id="process" class="py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Our <span class="text-sky-400 neon-text">Process</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">A streamlined workflow for guaranteed success, from concept to launch.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <!-- Step 1 -->
-                    <div class="glass-card p-6 rounded-xl reveal">
-                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">01</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Discover</h3>
-                        <p class="text-slate-400 text-sm">We start by understanding your vision, goals, and target audience.</p>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 200ms;">
-                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">02</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Design</h3>
-                        <p class="text-slate-400 text-sm">We craft a stunning, user-friendly design prototype for your approval.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 400ms;">
-                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">03</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Develop</h3>
-                        <p class="text-slate-400 text-sm">Our expert developers bring the design to life with clean, efficient code.</p>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 600ms;">
-                        <div class="font-orbitron text-5xl font-bold text-sky-400/30 mb-2">04</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Deploy</h3>
-                        <p class="text-slate-400 text-sm">We launch your project and provide support to ensure a smooth takeoff.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Vue App Root -->
+    <div id="app" class="flex flex-col min-h-screen" v-cloak>
         
-        <!-- Packages Section -->
-        <section id="packages" class="py-20 md:py-32 bg-black/50">
-            <div class="container mx-auto px-6">
-                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Affordable <span class="text-sky-400 neon-text">Packages</span></h2>
-                </div>
-                <div class="grid lg:grid-cols-3 gap-8 items-stretch">
-                    <div class="glass-card card-3d-hover p-8 flex flex-col reveal">
-                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Launchpad</h3>
-                        <p class="text-sky-400 text-4xl font-bold mb-4">₹3,000</p>
-                        <p class="text-slate-400 mb-6 flex-grow">A professional landing page or 5-page site to get your business online.</p>
-                        <a href="#contact" class="mt-auto w-full text-center neon-button text-sky-400 font-bold py-3 px-8 rounded-lg">Select Plan</a>
-                    </div>
-                    <div class="glass-card card-3d-hover p-8 flex flex-col border-2 border-sky-500 lg:scale-105 shadow-2xl shadow-sky-500/30 reveal" style="transition-delay: 200ms;">
-                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Orbit</h3>
-                        <p class="text-sky-400 text-4xl font-bold mb-4">₹9,000</p>
-                        <p class="text-slate-400 mb-6 flex-grow">A complete website solution with a custom design and CMS integration.</p>
-                        <a href="#contact" class="mt-auto w-full text-center neon-button bg-sky-500 text-black font-bold py-3 px-8 rounded-lg">Select Plan</a>
-                    </div>
-                    <div class="glass-card card-3d-hover p-8 flex flex-col reveal" style="transition-delay: 400ms;">
-                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Galaxy</h3>
-                        <p class="text-sky-400 text-4xl font-bold mb-4">Custom</p>
-                        <p class="text-slate-400 mb-6 flex-grow">A bespoke website or Android app tailored to your unique requirements.</p>
-                        <a href="#contact" class="mt-auto w-full text-center neon-button text-sky-400 font-bold py-3 px-8 rounded-lg">Contact Us</a>
-                    </div>
-                </div>
+        <!-- App-level Message/Notification -->
+        <transition name="fade">
+            <div v-if="appMessage.text" class="fixed top-24 right-6 z-[100] p-4 rounded-lg shadow-lg"
+                :class="appMessage.type === 'success' ? 'bg-green-600' : 'bg-red-600'">
+                <p class="text-white font-semibold">{{ appMessage.text }}</p>
             </div>
-        </section>
-
-        <!-- ** NEW: FAQ Section ** -->
-        <section id="faq" class="py-20 md:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Frequently Asked <span class="text-sky-400 neon-text">Questions</span></h2>
-                </div>
-                <div class="max-w-3xl mx-auto space-y-4" x-data="{ open: 1 }">
-                    <!-- FAQ Item 1 -->
-                    <div class="glass-card rounded-lg reveal">
-                        <button @click="open = (open === 1 ? 0 : 1)" class="w-full flex justify-between items-center text-left p-6">
-                            <span class="text-lg font-semibold text-white">How long does a project typically take?</span>
-                            <span class="text-sky-400 transition-transform" :class="{ 'rotate-45': open === 1 }">+</span>
-                        </button>
-                        <div x-show="open === 1" x-collapse class="px-6 pb-6 text-slate-400">
-                            A simple "Launchpad" website takes about 1-2 weeks. An "Orbit" package can take 3-4 weeks. Custom "Galaxy" projects have variable timelines based on their complexity.
-                        </div>
-                    </div>
-                    <!-- FAQ Item 2 -->
-                    <div class="glass-card rounded-lg reveal" style="transition-delay: 200ms;">
-                        <button @click="open = (open === 2 ? 0 : 2)" class="w-full flex justify-between items-center text-left p-6">
-                            <span class="text-lg font-semibold text-white">What do I need to provide to get started?</span>
-                            <span class="text-sky-400 transition-transform" :class="{ 'rotate-45': open === 2 }">+</span>
-                        </button>
-                        <div x-show="open === 2" x-collapse class="px-6 pb-6 text-slate-400">
-                           To start, we'll need your business logo, any text content you want on the site, and any specific images you'd like to include. We can also help with content creation if needed!
-                        </div>
-                    </div>
-                     <!-- FAQ Item 3 -->
-                    <div class="glass-card rounded-lg reveal" style="transition-delay: 400ms;">
-                        <button @click="open = (open === 3 ? 0 : 3)" class="w-full flex justify-between items-center text-left p-6">
-                            <span class="text-lg font-semibold text-white">Do you offer maintenance after launch?</span>
-                            <span class="text-sky-400 transition-transform" :class="{ 'rotate-45': open === 3 }">+</span>
-                        </button>
-                        <div x-show="open === 3" x-collapse class="px-6 pb-6 text-slate-400">
-                           Yes, we offer optional monthly maintenance plans to keep your site updated, secure, and running smoothly. We can discuss these options based on your needs.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32">
-            <div class="container mx-auto px-6 max-w-2xl text-center">
-                 <div class="mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white reveal font-orbitron">Get Your <span class="text-sky-400 neon-text">Free Quote</span></h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">Ready to launch? Let's connect and bring your digital vision to life.</p>
-                </div>
-                <form id="contact-form" class="space-y-6 reveal" style="transition-delay: 400ms;">
-                    <input type="text" id="name" placeholder="Your Name" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
-                    <input type="email" id="email" placeholder="Your Email" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required>
-                    <input type="tel" id="phone" placeholder="Your Phone (Optional)" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500">
-                    <textarea id="message" rows="5" placeholder="Tell us about your project..." class="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500" required></textarea>
-                    <button type="submit" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg w-full">Transmit Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- ** NEW: Expanded Footer ** -->
-    <footer class="bg-black/50 border-t border-sky-500/20">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <a href="#home" class="text-2xl font-bold text-white tracking-wider font-orbitron">
+        </transition>
+        
+        <!-- Navbar Component -->
+        <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+            :class="{ 'bg-black/80 backdrop-blur-lg shadow-lg shadow-sky-500/10': scrolled > 50 || mobileMenuOpen }">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#home" @click.prevent="navigate('#home')" class="text-2xl font-bold text-white tracking-wider font-orbitron">
                         codux<span class="text-sky-400 neon-text">.fun</span>
                     </a>
-                    <p class="text-slate-400 mt-4">Digital Solutions for a Global Audience.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-white tracking-wider">Quick Links</h3>
-                    <div class="mt-4 space-y-2">
-                        <a href="#about" class="block text-slate-400 hover:text-sky-400">About Us</a>
-                        <a href="#services" class="block text-slate-400 hover:text-sky-400">Services</a>
-                        <a href="#packages" class="block text-slate-400 hover:text-sky-400">Packages</a>
-                        <a href="#contact" class="block text-slate-400 hover:text-sky-400">Contact</a>
+                    <nav class="hidden md:flex items-center space-x-8 font-semibold">
+                        <a v-for="link in navLinks" :href="link.href" @click.prevent="navigate(link.href)" class="text-slate-300 hover:text-sky-400 transition-colors">{{ link.name }}</a>
+                        
+                        <!-- Admin/Login Link -->
+                        <a v-if="isLoggedIn" href="#admin" @click.prevent="navigate('#admin')" class="text-slate-300 hover:text-sky-400 transition-colors">Admin</a>
+                        <a v-if="!isLoggedIn" href="#login" @click.prevent="navigate('#login')" class="text-slate-300 hover:text-sky-400 transition-colors">Admin</a>
+                        <a v-if="isLoggedIn" href="#" @click.prevent="logout" class="text-red-400 hover:text-red-300 transition-colors">Logout</a>
+                    </nav>
+                    
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none" aria-label="Open menu">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path v-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                <path v-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                 <div>
-                    <h3 class="font-semibold text-white tracking-wider">Connect</h3>
-                     <p class="text-slate-400 mt-4">sdhanush451@gmail.com</p>
-                    <p class="text-slate-400">+91 93442 21217</p>
+            </div>
+            
+            <!-- Mobile Menu Dropdown -->
+            <transition name="fade">
+                <div v-show="mobileMenuOpen" class="md:hidden bg-black/95 backdrop-blur-lg">
+                    <a v-for="link in navLinks" :href="link.href" @click.prevent="navigate(link.href, true)" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">{{ link.name }}</a>
+                    
+                    <!-- Admin/Login Link (Mobile) -->
+                    <a v-if="isLoggedIn" href="#admin" @click.prevent="navigate('#admin', true)" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Admin</a>
+                    <a v-if="!isLoggedIn" href="#login" @click.prevent="navigate('#login', true)" class="block text-center px-4 py-3 text-slate-300 hover:bg-sky-500/20">Admin</a>
+                    <a v-if="isLoggedIn" href="#" @click.prevent="logout(true)" class="block text-center px-4 py-3 text-red-400 hover:bg-red-500/20">Logout</a>
+                </div>
+            </transition>
+        </header>
+
+        <!-- Main Content Area (Pages) -->
+        <main class="flex-grow">
+            <!-- 
+              Vue will swap between these sections based on the 
+              `currentPage` computed property (driven by the URL hash)
+            -->
+            
+            <!-- ========= HOME PAGE ========= -->
+            <div v-show="currentPage === 'home'">
+                <!-- Home Section -->
+                <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+                    <div class="container mx-auto px-6 text-center relative z-10">
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 font-orbitron">
+                            Custom Software Solutions
+                        </h1>
+                        <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                            Empowering businesses of all sizes with affordable, cutting-edge Websites, Android Apps, and Custom Software.
+                        </p>
+                        <a href="#packages" @click.prevent="navigate('#packages')" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105">
+                            Explore Packages
+                        </a>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="py-20 md:py-32">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white font-orbitron">Our <span class="text-sky-400 neon-text">Mission</span></h2>
+                            <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Our philosophy is simple: help businesses succeed online, wherever they are.</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <img src="https://placehold.co/600x400/010416/0ea5e9?text=Our+Team" alt="A graphic representing Codux.fun's focus on global business solutions" class="rounded-2xl shadow-2xl shadow-sky-500/20 w-full">
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-4">Empowering Businesses of All Sizes</h3>
+                                <p class="text-slate-400 mb-6">
+                                   Our core focus is helping businesses thrive in the digital world. We provide high-quality website and Android app development at affordable costs, ensuring that businesses of any size can have a powerful online presence. Your success is our core function.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section id="services" class="py-20 md:py-32 bg-black/50">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white font-orbitron">Our <span class="text-sky-400 neon-text">Services</span></h2>
+                        </div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="glass-card p-8 rounded-2xl text-center">
+                                <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3">Custom Web Development</h3>
+                                <p class="text-slate-400">Forging fast, secure, and scalable websites that form the backbone of your digital identity.</p>
+                            </div>
+                            <div class="glass-card p-8 rounded-2xl text-center">
+                                <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3">Android App Development</h3>
+                                <p class="text-slate-400">Engineering sleek, intuitive Android apps that put your brand in every pocket.</p>
+                            </div>
+                            <div class="glass-card p-8 rounded-2xl text-center">
+                                 <div class="inline-block bg-sky-500/10 p-4 rounded-full mb-4">
+                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7H5V5z" clip-rule="evenodd" />
+                                    </svg>
+                                 </div>
+                                <h3 class="text-xl font-bold text-white mb-3">Custom Software</h3>
+                                <p class="text-slate-400">Bespoke software solutions, digital services, and automations tailored to your exact business needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Packages Section -->
+                <section id="packages" class="py-20 md:py-32 bg-black/50">
+                    <div class="container mx-auto px-6">
+                         <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white font-orbitron">Affordable <span class="text-sky-400 neon-text">Packages</span></h2>
+                        </div>
+                        <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                            <div class="glass-card p-8 flex flex-col">
+                                <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Launchpad</h3>
+                                <p class="text-sky-400 text-4xl font-bold mb-4">₹3,000</p>
+                                <p class="text-slate-400 mb-6 flex-grow">A professional landing page or 5-page site to get your business online.</p>
+                                <a href="#contact" @click.prevent="setPackage('Website')" class="mt-auto w-full text-center neon-button text-sky-400 font-bold py-3 px-8 rounded-lg">Select Plan</a>
+                            </div>
+                            <div class="glass-card p-8 flex flex-col border-2 border-sky-500 lg:scale-105 shadow-2xl shadow-sky-500/30">
+                                <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Orbit</h3>
+                                <p class="text-sky-400 text-4xl font-bold mb-4">₹9,000</p>
+                                <p class="text-slate-400 mb-6 flex-grow">A complete website solution with a custom design and CMS integration.</p>
+                                <a href="#contact" @click.prevent="setPackage('Website')" class="mt-auto w-full text-center neon-button bg-sky-500 text-black font-bold py-3 px-8 rounded-lg">Select Plan</a>
+                            </div>
+                            <div class="glass-card p-8 flex flex-col">
+                                <h3 class="font-orbitron text-2xl font-bold text-white mb-2">Galaxy</h3>
+                                <p class="text-sky-400 text-4xl font-bold mb-4">Custom</p>
+                                <p class="text-slate-400 mb-6 flex-grow">A bespoke Android App or Custom Software solution tailored to your unique requirements.</p>
+                                <a href="#contact" @click.prevent="setPackage('Custom Software')" class="mt-auto w-full text-center neon-button text-sky-400 font-bold py-3 px-8 rounded-lg">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq" class="py-20 md:py-32">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white font-orbitron">Frequently Asked <span class="text-sky-400 neon-text">Questions</span></h2>
+                        </div>
+                        <div class="max-w-3xl mx-auto space-y-4">
+                            <!-- FAQ Item 1 -->
+                            <div class="glass-card rounded-lg">
+                                <button @click="openFAQ = (openFAQ === 1 ? 0 : 1)" class="w-full flex justify-between items-center text-left p-6">
+                                    <span class="text-lg font-semibold text-white">How long does a project typically take?</span>
+                                    <span class="text-sky-400 text-2xl transition-transform" :class="{ 'rotate-45': openFAQ === 1 }">+</span>
+                                </button>
+                                <div v-show="openFAQ === 1" class="px-6 pb-6 text-slate-400">
+                                    A simple "Launchpad" website takes about 1-2 weeks. An "Orbit" package can take 3-4 weeks. Custom "Galaxy" projects (Apps/Software) have variable timelines based on their complexity.
+                                </div>
+                            </div>
+                            <!-- FAQ Item 2 -->
+                            <div class="glass-card rounded-lg">
+                                <button @click="openFAQ = (openFAQ === 2 ? 0 : 2)" class="w-full flex justify-between items-center text-left p-6">
+                                    <span class="text-lg font-semibold text-white">What do I need to provide to get started?</span>
+                                    <span class="text-sky-400 text-2xl transition-transform" :class="{ 'rotate-45': openFAQ === 2 }">+</span>
+                                </button>
+                                <div v-show="openFAQ === 2" class="px-6 pb-6 text-slate-400">
+                                   To start, we'll need your business logo, any text content you want on the site, and any specific images you'd like to include.. For apps, we'll start with a detailed features list. We can help with content creation if needed!
+                                </div>
+                            </div>
+                             <!-- FAQ Item 3 -->
+                            <div class="glass-card rounded-lg">
+                                <button @click="openFAQ = (openFAQ === 3 ? 0 : 3)" class="w-full flex justify-between items-center text-left p-6">
+                                    <span class="text-lg font-semibold text-white">Do you offer maintenance after launch?</span>
+                                    <span class="text-sky-400 text-2xl transition-transform" :class="{ 'rotate-45': openFAQ === 3 }">+</span>
+                                </button>
+                                <div v-show="openFAQ === 3" class="px-6 pb-6 text-slate-400">
+                                   Yes, we offer optional monthly maintenance plans to keep your site or app updated, secure, and running smoothly. We can discuss these options based on your needs.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="py-20 md:py-32">
+                    <div class="container mx-auto px-6 max-w-2xl text-center">
+                         <div class="mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white font-orbitron">Get Your <span class="text-sky-400 neon-text">Free Quote</span></h2>
+                            <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Ready to launch? Let's connect and bring your digital vision to life.</p>
+                        </div>
+                        <form @submit.prevent="submitInquiry" class="space-y-6">
+                            <!-- Row 1: Name, Email, Phone -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <input v-model="form.fullName" type="text" placeholder="Full Name" class="form-input" required>
+                                <input v-model="form.email" type="email" placeholder="Email Address" class="form-input" required>
+                            </div>
+                            <input v-model="form.phone" type="tel" placeholder="Phone Number (Optional)" class="form-input">
+                            
+                            <!-- Row 2: Service Type, Budget -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <select v-model="form.serviceType" class="form-input" required>
+                                    <option value="" disabled>Select a Service Type</option>
+                                    <option>Website</option>
+                                    <option>Android App</option>
+                                    <option>Custom Software</option>
+                                    <option>Other</option>
+                                </select>
+                                <select v-model="form.budgetRange" class="form-input" required>
+                                    <option value="" disabled>Select a Budget Range</option>
+                                    <option>₹3,000 - ₹5,000</option>
+                                    <option>₹5,000 - ₹10,000</option>
+                                    <option>₹10,000 - ₹25,000</option>
+                                    <option>₹25,000+</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Row 3: Project Description -->
+                            <textarea v-model="form.projectDescription" rows="5" placeholder="Tell us about your project..." class="form-input" required></textarea>
+                            
+                            <button type="submit" :disabled="form.isLoading" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg w-full disabled:opacity-50 disabled:cursor-not-allowed">
+                                {{ form.isLoading ? 'Sending...' : 'Transmit Message' }}
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ========= ADMIN LOGIN PAGE ========= -->
+            <div v-show="currentPage === 'login'" class="min-h-screen flex items-center justify-center pt-24">
+                <div class="glass-card p-8 rounded-2xl w-full max-w-md mx-4">
+                    <h2 class="text-3xl font-bold text-white text-center mb-6 font-orbitron">Admin <span class="text-sky-400 neon-text">Login</span></h2>
+                    <form @submit.prevent="handleLogin" class="space-y-6">
+                        <div>
+                            <label for="username" class="block text-sm font-medium text-slate-300 mb-2">Email (Username)</label>
+                            <input v-model="loginForm.username" type="email" id="username" class="form-input" required>
+                        </div>
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-slate-300 mb-2">Password</label>
+                            <input v-model="loginForm.password" type="password" id="password" class="form-input" required>
+                        </div>
+                        <p v-if="loginForm.error" class="text-red-400 text-sm text-center">{{ loginForm.error }}</p>
+                        <button type="submit" :disabled="loginForm.isLoading" class="neon-button text-sky-400 font-bold py-3 px-8 rounded-lg w-full disabled:opacity-50 disabled:cursor-not-allowed">
+                            {{ loginForm.isLoading ? 'Signing In...' : 'Sign In' }}
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="mt-12 border-t border-sky-500/20 pt-8 text-center text-slate-500">
-                <p>&copy; 2025 codux.fun | All Rights Reserved.</p>
+
+            <!-- ========= ADMIN DASHBOARD PAGE ========= -->
+            <div v-show="currentPage === 'admin'" class="min-h-screen container mx-auto px-6 pt-24 md:pt-32 pb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 font-orbitron">Admin <span class="text-sky-400 neon-text">Dashboard</span></h2>
+                
+                <!-- Loading State -->
+                <div v-if="admin.isLoading" class="text-center text-slate-300 text-lg">
+                    Loading inquiries...
+                </div>
+                
+                <!-- Error State -->
+                <div v-else-if="admin.error" class="glass-card p-6 rounded-lg text-red-400">
+                    <strong>Error:</strong> {{ admin.error }}
+                </div>
+                
+                <!-- Empty State -->
+                <div v-else-if="admin.inquiries.length === 0" class="glass-card p-6 rounded-lg text-center text-slate-400">
+                    No inquiries found.
+                </div>
+                
+                <!-- Data Table -->
+                <div v-else class="glass-card rounded-2xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[800px] text-left">
+                            <thead class="bg-sky-500/10">
+                                <tr>
+                                    <th class="p-4 font-semibold text-white">Submitted</th>
+                                    <th class="p-4 font-semibold text-white">Name</th>
+                                    <th class="p-4 font-semibold text-white">Contact</th>
+                                    <th class="p-4 font-semibold text-white">Service</th>
+                                    <th class="p-4 font-semibold text-white">Budget</th>
+                                    <th class="p-4 font-semibold text-white">Description</th>
+                                    <th class="p-4 font-semibold text-white">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-sky-500/20">
+                                <tr v-for="inquiry in admin.inquiries" :key="inquiry.id" class="hover:bg-sky-500/5 transition-colors">
+                                    <td class="p-4 align-top text-slate-300">{{ formatDateTime(inquiry.created_at) }}</td>
+                                    <td class="p-4 align-top text-white font-medium">{{ inquiry.full_name }}</td>
+                                    <td class="p-4 align-top text-slate-300">
+                                        <div>{{ inquiry.email }}</div>
+                                        <div>{{ inquiry.phone_number }}</div>
+                                    </td>
+                                    <td class="p-4 align-top text-slate-300">{{ inquiry.service_type }}</td>
+                                    <td class="p-4 align-top text-slate-300">{{ inquiry.budget_range }}</td>
+                                    <td class="p-4 align-top text-slate-300 max-w-xs truncate" :title="inquiry.project_description">{{ inquiry.project_description }}</td>
+                                    <td class="p-4 align-top">
+                                        <button @click="deleteInquiry(inquiry.id)" class="bg-red-600 hover:bg-red-500 text-white text-xs font-bold py-2 px-3 rounded-md transition-colors">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
-    
-    <!-- JS Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://unpkg.com/three-globe@2.31.0/dist/three-globe.min.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
+        </main>
+        
+        <!-- Footer Component -->
+        <footer class="bg-black/50 border-t border-sky-500/20" v-show="currentPage === 'home'">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <a href="#home" @click.prevent="navigate('#home')" class="text-2xl font-bold text-white tracking-wider font-orbitron">
+                            codux<span class="text-sky-400 neon-text">.fun</span>
+                        </a>
+                        <p class="text-slate-400 mt-4">Digital Solutions for a Global Audience.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white tracking-wider">Quick Links</h3>
+                        <div class="mt-4 space-y-2">
+                            <a href="#about" @click.prevent="navigate('#about')" class="block text-slate-400 hover:text-sky-400">About Us</a>
+                            <a href="#services" @click.prevent="navigate('#services')" class="block text-slate-400 hover:text-sky-400">Services</a>
+                            <a href="#packages" @click.prevent="navigate('#packages')" class="block text-slate-400 hover:text-sky-400">Packages</a>
+                            <a href="#contact" @click.prevent="navigate('#contact')" class="block text-slate-400 hover:text-sky-400">Contact</a>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="font-semibold text-white tracking-wider">Connect</h3>
+                         <p class="text-slate-400 mt-4">coduxdotfun@outlook.com</p>
+                        <p class="text-slate-400">+91 93442 21217</p>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-sky-500/20 pt-8 text-center text-slate-500">
+                    <p>&copy; 2025 codux.fun | All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
 
-        // --- Interactive Globe ---
-        try {
-            const globeContainer = document.getElementById('globe-container');
-            if (globeContainer && typeof Globe !== 'undefined') {
-                const gData = [...Array(10).keys()].map(() => ({
-                    lat: (Math.random() - 0.5) * 180,
-                    lng: (Math.random() - 0.5) * 360,
-                    size: Math.random() / 3,
-                    color: ['#0ea5e9', '#ffffff', '#93c5fd'][Math.round(Math.random() * 2)]
-                }));
+    </div>
 
-                const globe = Globe()(globeContainer)
-                    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                    .pointsData(gData)
-                    .pointAltitude('size')
-                    .pointColor('color')
-                    .arcsData([...Array(gData.length).keys()].map(() => ({
-                        startLat: gData[Math.floor(Math.random() * gData.length)].lat,
-                        startLng: gData[Math.floor(Math.random() * gData.length)].lng,
-                        endLat: gData[Math.floor(Math.random() * gData.length)].lat,
-                        endLng: gData[Math.floor(Math.random() * gData.length)].lng,
-                        color: `rgba(14, 165, 233, ${Math.random() * 0.5 + 0.2})`
-                     })))
-                    .arcColor('color')
-                    .arcDashLength(0.4)
-                    .arcDashGap(1)
-                    .arcDashInitialGap(() => Math.random())
-                    .arcDashAnimateTime(4000)
-                    .arcStroke(0.2);
+    <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Axios for API calls -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-                globe.controls().autoRotate = true;
-                globe.controls().autoRotateSpeed = 0.8;
-                globe.controls().enableZoom = false;
+    <!-- Main Vue Application Script -->
+    <script type="module">
+        const { createApp, ref, reactive, computed, onMounted, watch } = Vue;
+
+        // --- API Configuration ---
+        // This is the client that will talk to your Node.js backend
+        const apiClient = axios.create({
+            baseURL: 'https://coduxdotfun-server.onrender.com/api', // Make sure your backend is running here
+            headers: {
+                'Content-Type': 'application/json'
             }
-        } catch (error) {
-            console.error("3D Globe initialization failed:", error);
-        }
-
-        // --- 3D Card Hover Effect ---
-        const cards = document.querySelectorAll('.card-3d-hover');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-            });
         });
 
-        // --- WhatsApp Form Handler ---
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const yourWhatsAppNumber = '919344221217'; 
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const message = document.getElementById('message').value;
-                const formattedMessage = `*New Inquiry from codux.fun!*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone || 'Not provided'}\n\n*Message:*\n${message}`;
-                const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(formattedMessage)}`;
-                window.open(whatsappUrl, '_blank');
-            });
-        }
+        // Add a request interceptor to ATTACH THE JWT TOKEN to every API call
+        apiClient.interceptors.request.use(config => {
+            const token = localStorage.getItem('codux_token');
+            if (token) {
+                config.headers['Authorization'] = `Bearer ${token}`;
+            }
+            return config;
+        }, error => {
+            return Promise.reject(error);
+        });
 
-        // --- Intersection Observer for Animations ---
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+        // --- Main Vue App ---
+        createApp({
+            setup() {
+                // --- Global State ---
+                const token = ref(localStorage.getItem('codux_token') || null);
+                const isLoggedIn = computed(() => !!token.value);
+                const appMessage = reactive({ text: '', type: 'success' }); // 'success' or 'error'
+                
+                // --- Page Routing ---
+                const currentHash = ref(window.location.hash || '#home');
+                const currentPage = computed(() => {
+                    if (!isLoggedIn.value) {
+                        // If not logged in, only allow home and login pages
+                        return currentHash.value === '#login' ? 'login' : 'home';
+                    }
+                    // If logged in, allow all pages
+                    switch (currentHash.value) {
+                        case '#login':
+                            return 'admin'; // Redirect to admin if logged in and trying to access login
+                        case '#admin':
+                            return 'admin';
+                        default:
+                            return 'home';
+                    }
+                });
+
+                window.addEventListener('hashchange', () => {
+                    currentHash.value = window.location.hash || '#home';
+                });
+
+                function navigate(hash, isMobile = false) {
+                    window.location.hash = hash;
+                    if (isMobile) {
+                        mobileMenuOpen.value = false;
+                    }
+                    // For SPA-like scrolling on homepage
+                    if (hash.startsWith('#') && hash.length > 1 && currentPage.value === 'home') {
+                        const el = document.getElementById(hash.substring(1));
+                        if(el) {
+                           el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
                 }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    });
+                
+                // --- App-level Notifications ---
+                let messageTimeout = null;
+                function showMessage(text, type = 'success', duration = 3000) {
+                    appMessage.text = text;
+                    appMessage.type = type;
+                    
+                    clearTimeout(messageTimeout);
+                    messageTimeout = setTimeout(() => {
+                        appMessage.text = '';
+                    }, duration);
+                }
+
+                // --- Navbar State ---
+                const scrolled = ref(0);
+                const mobileMenuOpen = ref(false);
+                const navLinks = [
+                    { name: 'About', href: '#about' },
+                    { name: 'Services', href: '#services' },
+                    { name: 'Packages', href: '#packages' },
+                    { name: 'FAQ', href: '#faq' },
+                    { name: 'Contact', href: '#contact' },
+                ];
+                onMounted(() => {
+                    window.addEventListener('scroll', () => {
+                        scrolled.value = window.scrollY;
+                    });
+                     // Initial page load check
+                    if (currentPage.value === 'admin' && isLoggedIn.value) {
+                        fetchInquiries();
+                    }
+                });
+
+                // --- FAQ State ---
+                const openFAQ = ref(0);
+
+                // --- Contact Form State ---
+                const form = reactive({
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    serviceType: '',
+                    budgetRange: '',
+                    projectDescription: '',
+                    isLoading: false,
+                });
+
+                async function submitInquiry() {
+                    form.isLoading = true;
+                    try {
+                        // Payload matches the frontend form (e.g., 'phone')
+                        const payload = { ...form };
+                        delete payload.isLoading;
+                        
+                        // The Node.js server will handle mapping 'phone' to 'phoneNumber'
+                        await apiClient.post('/public/inquiries', payload);
+                        
+                        // Reset form
+                        form.fullName = '';
+                        form.email = '';
+                        form.phone = '';
+                        form.serviceType = '';
+                        form.budgetRange = '';
+                        form.projectDescription = '';
+                        
+                        showMessage('Your inquiry was sent successfully!', 'success');
+                        
+                    } catch (error) {
+                        console.error('Inquiry submission error:', error);
+                        const errorMsg = error.response?.data?.error || 'Failed to send inquiry. Please try again.';
+                        showMessage(errorMsg, 'error');
+                    } finally {
+                        form.isLoading = false;
+                    }
+                }
+                
+                function setPackage(service) {
+                    form.serviceType = service;
+                    navigate('#contact');
+                }
+
+                // --- Admin Login State ---
+                const loginForm = reactive({
+                    username: '', // This will be the email
+                    password: '',
+                    isLoading: false,
+                    error: '',
+                });
+
+                async function handleLogin() {
+                    loginForm.isLoading = true;
+                    loginForm.error = '';
+                    try {
+                        // This endpoint matches index.js
+                        const response = await apiClient.post('/public/authenticate', {
+                            username: loginForm.username,
+                            password: loginForm.password,
+                        });
+                        
+                        const newToken = response.data.token;
+                        localStorage.setItem('codux_token', newToken);
+                        token.value = newToken; // This will trigger computed properties
+                        
+                        loginForm.username = '';
+                        loginForm.password = '';
+                        
+                        navigate('#admin'); // Will now go to admin page
+                        showMessage('Login successful!', 'success');
+                        
+                    } catch (error) {
+                        console.error('Login error:', error);
+                        loginForm.error = 'Invalid username or password.';
+                        showMessage('Login failed.', 'error');
+                    } finally {
+                        loginForm.isLoading = false;
+                    }
+                }
+
+                function logout(isMobile = false) {
+                    localStorage.removeItem('codux_token');
+                    token.value = null;
+                    if (isMobile) mobileMenuOpen.value = false;
+                    navigate('#home');
+                    showMessage('You have been logged out.', 'success');
+                }
+
+                // --- Admin Dashboard State ---
+                const admin = reactive({
+                    inquiries: [],
+                    isLoading: false,
+                    error: '',
+                });
+
+                async function fetchInquiries() {
+                    if (!isLoggedIn.value) return;
+                    admin.isLoading = true;
+                    admin.error = '';
+                    try {
+                        const response = await apiClient.get('/admin/inquiries');
+                        // Data from Supabase/Node.js is already sorted
+                        // and uses snake_case, e.g., created_at, full_name
+                        admin.inquiries = response.data; 
+                    } catch (error) {
+                        console.error('Failed to fetch inquiries:', error);
+                        admin.error = 'Could not load data. Your session may have expired.';
+                        if (error.response && error.response.status === 403) {
+                            logout(); // Log out if forbidden
+                        }
+                    } finally {
+                        admin.isLoading = false;
+                    }
+                }
+
+                async function deleteInquiry(id) {
+                    // Note: In a real app, you'd want a custom confirmation modal, not window.confirm
+                    if (!window.confirm('Are you sure you want to delete this inquiry?')) {
+                        return;
+                    }
+                    try {
+                        await apiClient.delete(`/admin/inquiries/${id}`);
+                        admin.inquiries = admin.inquiries.filter(inq => inq.id !== id);
+                        showMessage('Inquiry deleted successfully.', 'success');
+                    } catch (error) {
+                        console.error('Failed to delete inquiry:', error);
+                        showMessage('Failed to delete inquiry.', 'error');
+                    }
+                }
+
+                // --- Watchers ---
+                // When the user logs in, fetch inquiries for the admin page
+                watch(isLoggedIn, (newValue) => {
+                    if (newValue && currentPage.value === 'admin') {
+                        fetchInquiries();
+                    }
+                });
+                
+                // When the page changes to 'admin', fetch inquiries
+                watch(currentPage, (newPage) => {
+                    if (newPage === 'admin' && isLoggedIn.value) {
+                        fetchInquiries();
+                    }
+                });
+
+                // --- Helper Functions ---
+                function formatDateTime(isoString) {
+                    if (!isoString) return 'N/A';
+                    try {
+                        const date = new Date(isoString);
+                        return date.toLocaleString('en-US', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                        });
+                    } catch (e) {
+                        return isoString;
+                    }
+                }
+
+                return {
+                    // State
+                    isLoggedIn,
+                    appMessage,
+                    scrolled,
+                    mobileMenuOpen,
+                    navLinks,
+                    openFAQ,
+                    form,
+                    loginForm,
+                    admin,
+                    currentPage,
+                    
+                    // Methods
+                    navigate,
+                    showMessage,
+                    submitInquiry,
+                    setPackage,
+                    handleLogin,
+                    logout,
+                    deleteInquiry,
+                    formatDateTime,
+                };
+            }
+        }).mount('#app');
     </script>
 </body>
 </html>
-
